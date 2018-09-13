@@ -23,7 +23,7 @@
 </template>
 
 <script>
-// import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "PollForm",
@@ -36,22 +36,19 @@ export default {
     };
   },
   methods: {
-    // ...mapActions("poll", ["fetchSubmissions", "postSubmission"]),
+    ...mapActions("poll", ["postSubmission"]),
     handleSubmit() {
-      // this.postSubmission({
-      //   "form-name": "yanny-v-laurel",
-      //   clip: this.form.chosenClip
-      // })
-      //   .then(res => {
-      //     this.$router.push("thanks");
-      //   })
-      //   .catch(res => {
-      //     this.$router.push("404");
-      //   });
+      this.postSubmission({
+        "form-name": "yanny-v-laurel",
+        clip: this.form.chosenClip
+      })
+        .then(() => {
+          this.$router.push("thanks");
+        })
+        .catch(() => {
+          this.$router.push("404");
+        });
     }
-  },
-  created() {
-    // this.fetchSubmissions();
   }
 };
 </script>

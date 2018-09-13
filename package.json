@@ -8,15 +8,20 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "firebase": "^5.4.2",
+    "prerender-spa-plugin": "^3.4.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@prerenderer/renderer-jsdom": "^0.2.0",
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-eslint": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
     "@vue/eslint-config-prettier": "^3.0.3",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
