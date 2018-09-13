@@ -21,13 +21,14 @@ const fetchSubmissions = ({ commit }) => {
     });
 };
 
-const postSubmission = payload => {
+const postSubmission = ({ commit }, payload) => {
   const encode = function(data) {
     return Object.keys(data)
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join("&");
   };
   return new Promise((reject, resolve) => {
+    debugger;
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -35,6 +36,7 @@ const postSubmission = payload => {
     })
       .then(() => {
         resolve();
+        commit("");
       })
       .catch(() => {
         reject();
