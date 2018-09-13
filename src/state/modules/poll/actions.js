@@ -27,21 +27,17 @@ const postSubmission = ({ commit }, payload) => {
       .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join("&");
   };
-  return new Promise((reject, resolve) => {
-    debugger;
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode(payload)
+  return fetch("/", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode(payload)
+  })
+    .then(() => {
+      commit("");
     })
-      .then(() => {
-        resolve();
-        commit("");
-      })
-      .catch(() => {
-        reject();
-      });
-  });
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export default {
