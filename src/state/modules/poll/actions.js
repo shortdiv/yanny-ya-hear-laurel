@@ -21,32 +21,25 @@ const fetchSubmissions = ({ commit }) => {
     });
 };
 
-const postSubmission = ({ commit }, payload) => {
-  return new Promise((resolve, reject) => {
-    debugger;
-    if (payload) {
-      var newPostKey = db
-        .ref()
-        .child(`submissions`)
-        .push().key;
-      db.ref(`submissions/${newPostKey}`).set({
-        body: {
-          human_fields: {
-            clip: payload.clip
-          }
-        }
+const postSubmission = payload => {
+  const encode = function(data) {
+    return Object.keys(data)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join("&");
+  };
+  return new Promise((reject, resolve) => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(payload)
+    })
+      .then(() => {
+        resolve();
+      })
+      .catch(() => {
+        reject();
       });
-      commit("SET_SUBMISSIONS", payload);
-      resolve(payload);
-    }
-    reject();
   });
-
-  // return fetch("/", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //   body: encode(payload)
-  // });
 };
 
 export default {

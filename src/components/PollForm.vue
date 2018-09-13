@@ -36,7 +36,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("poll", ["postSubmission"]),
+    ...mapActions("poll", ["fetchSubmissions", "postSubmission"]),
     handleSubmit() {
       this.postSubmission({
         "form-name": "yanny-v-laurel",
@@ -49,6 +49,9 @@ export default {
           this.$router.push("404");
         });
     }
+  },
+  created() {
+    this.fetchSubmissions();
   }
 };
 </script>
