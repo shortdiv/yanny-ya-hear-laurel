@@ -8,7 +8,7 @@
           <label>
             <input
               type="radio"
-              name="clip"
+              name="sound"
               :value="soundBite"
               :checked="soundBite === form.chosenClip"
               @input="ev => form.chosenClip = ev.target.value"
@@ -38,9 +38,10 @@ export default {
   methods: {
     ...mapActions("poll", ["fetchSubmissions", "postSubmission"]),
     handleSubmit() {
+      debugger;
       this.postSubmission({
         "form-name": "yanny-v-laurel",
-        clip: this.form.chosenClip
+        sound: this.form.chosenClip
       })
         .then(() => {
           this.$router.push("thanks");
