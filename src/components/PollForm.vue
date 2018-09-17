@@ -8,7 +8,7 @@
           <label>
             <input
               type="radio"
-              name="sound"
+              name="clip"
               :value="soundBite"
               :checked="soundBite === form.chosenClip"
               @input="ev => form.chosenClip = ev.target.value"
