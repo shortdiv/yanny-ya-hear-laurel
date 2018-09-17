@@ -7,7 +7,7 @@ const submissionCounts = state => {
   for (const submissionId in state.submissions) {
     const soundMap = { Yanny: "Yanny", Laurel: "Laurel", Both: "Both" };
     soundClips[
-      soundMap[state.submissions[submissionId].body.human_fields.clip]
+      soundMap[state.submissions[submissionId].body.human_fields.Sound]
     ] += 1;
   }
   return soundClips;
